@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://poppoworks.dev/sitemap.xml

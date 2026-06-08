@@ -386,6 +386,18 @@
       justify-self: start;
     }
 
+    .app-actions {
+      align-self: end;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .app-actions .button {
+      align-self: auto;
+      justify-self: auto;
+    }
+
     .ad-section {
       padding: 28px 0 18px;
     }
@@ -460,9 +472,10 @@
         width: 100%;
       }
 
-      .app-card .button {
-        justify-self: stretch;
-      }
+        .app-card .button,
+        .app-actions .button {
+          justify-self: stretch;
+        }
     }
   </style>
 </head>
@@ -474,6 +487,7 @@
         <a class="brand" href="/" aria-label="Poppoworks ホーム">Poppoworks</a>
           <nav class="nav" aria-label="主要ナビゲーション">
             <a href="#apps">Apps</a>
+            <a href="framemaker.html">FrameMaker</a>
             <a href="#about">About</a>
             <a href="contact.html">Contact</a>
           </nav>
@@ -528,7 +542,7 @@
               <div>
                 <h3>FrameMaker</h3>
                 <p>
-                  画像に白や黒のフレームを追加するためのWebアプリです。ブラウザから使えるので、すぐに利用できます。
+                  画像に正方形や黄金比などの余白フレームを付け、背景色、角丸、メインカラー帯を調整して保存できるWebアプリです。
                 </p>
                 <div class="app-meta" aria-label="アプリ情報">
                   <span class="tag">Web App</span>
@@ -536,9 +550,12 @@
                   <span class="tag">無料</span>
                 </div>
               </div>
-              <a class="button button-primary" href="https://framemaker.poppoworks.dev/" rel="noopener">
-                アプリへ移動
-              </a>
+              <div class="app-actions">
+                <a class="button button-primary" href="https://framemaker.poppoworks.dev/" rel="noopener">
+                  アプリへ移動
+                </a>
+                <a class="button button-secondary" href="framemaker.html">紹介を見る</a>
+              </div>
             </article>
           </div>
         </div>
@@ -564,6 +581,8 @@
             <a href="privacy.html">Privacy Policy</a>
             /
             <a href="contact.html">Contact</a>
+            /
+            <a href="framemaker.html">FrameMaker</a>
           </span>
         </div>
     </footer>

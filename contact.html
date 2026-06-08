@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Poppoworks</title>
+  <meta name="description" content="Poppoworks の連絡先ページです。GitHub プロフィールと X プロフィールを掲載しています。">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f6f4ee">
+  <link rel="canonical" href="https://poppoworks.dev/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Poppoworks">
+  <meta property="og:title" content="Contact | Poppoworks">
+  <meta property="og:description" content="Poppoworks の連絡先ページです。GitHub プロフィールと X プロフィールを掲載しています。">
+  <meta property="og:url" content="https://poppoworks.dev/contact.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f4ee;
+      --surface: #fffdf8;
+      --ink: #202124;
+      --muted: #64676d;
+      --line: #ded9cb;
+      --accent: #0f766e;
+      --accent-strong: #115e59;
+      font-family:
+        "Inter",
+        "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        Meiryo,
+        system-ui,
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent 34%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .header,
+    .footer {
+      border-color: rgba(32, 33, 36, 0.08);
+      border-style: solid;
+      border-width: 0 0 1px;
+      background: rgba(246, 244, 238, 0.86);
+    }
+
+    .footer {
+      border-width: 1px 0 0;
+    }
+
+    .inner {
+      width: min(860px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .header .inner,
+    .footer .inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      font-size: 0.94rem;
+    }
+
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    main {
+      padding: 56px 0 72px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+      margin: 0 0 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 32px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 118px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .contact-card h2 {
+      font-size: 1.24rem;
+      line-height: 1.35;
+      margin: 0 0 4px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 0 16px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--accent-strong);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-top: 24px;
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      .inner {
+        width: min(100% - 28px, 860px);
+      }
+
+      .header .inner,
+      .footer .inner,
+      .contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .header .inner,
+      .footer .inner {
+        padding: 14px 0;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="inner">
+      <a class="brand" href="/">Poppoworks</a>
+      <nav class="nav" aria-label="主要ナビゲーション">
+        <a href="/">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="inner">
+      <h1>Contact</h1>
+      <p class="lead">
+        Poppoworks への連絡や開発状況の確認は、以下のプロフィールからお願いします。
+      </p>
+
+      <div class="contact-list">
+        <section class="contact-card" aria-labelledby="github-title">
+          <div>
+            <h2 id="github-title">GitHub</h2>
+            <p>開発中のリポジトリや公開コードを確認できます。</p>
+          </div>
+          <a class="button" href="https://github.com/gosling-goldwyn" rel="noopener">GitHub を開く</a>
+        </section>
+
+        <section class="contact-card" aria-labelledby="x-title">
+          <div>
+            <h2 id="x-title">X</h2>
+            <p>公開情報や更新情報の掲載先です。正式なプロフィールURLに差し替えてください。</p>
+          </div>
+          <a class="button" href="https://x.com/hato366" rel="noopener">X を開く</a>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="inner">
+      <span>&copy; 2026 Poppoworks</span>
+      <span><a href="privacy.html">Privacy Policy</a></span>
+    </div>
+  </footer>
+</body>
+
+</html>

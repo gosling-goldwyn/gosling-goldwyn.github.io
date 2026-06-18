@@ -1,439 +1,246 @@
 <!doctype html>
 <html lang="ja">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FrameMaker | 画像に余白フレームを追加するWebアプリ</title>
-  <meta name="description" content="FrameMaker は、画像に正方形・4:3・白銀比・黄金比などの余白フレームを追加し、背景色や角丸、メインカラー帯を調整して保存できるWebアプリです。">
+  <title>FrameMaker | 画像に余白フレームを追加するブラウザツール</title>
+  <meta name="description" content="FrameMaker は、SNS投稿画像、ブログ用画像、YouTubeサムネイル、ポートフォリオ画像、スクリーンショット整理に使える余白フレーム作成ツールです。">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#f6f4ee">
   <link rel="canonical" href="https://poppoworks.dev/framemaker.html">
+  <link rel="stylesheet" href="styles.css">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Poppoworks">
-  <meta property="og:title" content="FrameMaker | 画像に余白フレームを追加するWebアプリ">
-  <meta property="og:description" content="FrameMaker は、画像に余白フレームを追加し、背景色や角丸、メインカラー帯を調整して保存できるWebアプリです。">
+  <meta property="og:title" content="FrameMaker | 画像に余白フレームを追加するブラウザツール">
+  <meta property="og:description" content="画像に余白フレームを追加し、投稿先や掲載先に合わせて比率と見た目を整えるWebアプリです。">
   <meta property="og:url" content="https://poppoworks.dev/framemaker.html">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="FrameMaker | 画像に余白フレームを追加するWebアプリ">
-  <meta name="twitter:description" content="正方形・4:3・白銀比・黄金比などのフレーム比率に対応した、画像フレーム作成Webアプリです。">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5840725185082524" crossorigin="anonymous"></script>
   <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "@id": "https://framemaker.poppoworks.dev/#software",
-        "name": "FrameMaker",
-        "url": "https://framemaker.poppoworks.dev/",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Web",
-        "description": "FrameMaker は、画像に余白フレームを追加し、背景色や角丸、メインカラー帯を調整して保存できるWebアプリです。",
-        "featureList": [
-          "画像への余白フレーム追加",
-          "正方形、4:3、白銀比、3:2、黄金比、平方根3の比率プリセット",
-          "白、黒、画像由来の背景色選択",
-          "角丸調整",
-          "メインカラー帯の追加",
-          "PNG画像として保存"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "JPY"
-        }
-      }
-    </script>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f6f4ee;
-      --surface: #fffdf8;
-      --ink: #202124;
-      --muted: #64676d;
-      --line: #ded9cb;
-      --accent: #0f766e;
-      --accent-strong: #115e59;
-      --warm: #efb047;
-      font-family:
-        "Inter",
-        "Noto Sans JP",
-        "Hiragino Kaku Gothic ProN",
-        "Yu Gothic",
-        Meiryo,
-        system-ui,
-        sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background:
-        linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent 34%),
-        linear-gradient(225deg, rgba(239, 176, 71, 0.14), transparent 32%),
-        var(--bg);
-      color: var(--ink);
-      line-height: 1.75;
-    }
-
-    a {
-      color: var(--accent);
-    }
-
-    .header,
-    .footer {
-      border-color: rgba(32, 33, 36, 0.08);
-      border-style: solid;
-      border-width: 0 0 1px;
-      background: rgba(246, 244, 238, 0.86);
-    }
-
-    .footer {
-      border-width: 1px 0 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .inner {
-      width: min(1040px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .header .inner,
-    .footer .inner {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      color: var(--ink);
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .nav {
-      display: flex;
-      gap: 16px;
-      font-size: 0.94rem;
-    }
-
-    .nav a {
-      color: var(--muted);
-      text-decoration: none;
-    }
-
-    main {
-      padding: 58px 0 74px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(280px, 0.96fr);
-      gap: clamp(28px, 6vw, 68px);
-      align-items: center;
-    }
-
-    .eyebrow {
-      color: var(--accent-strong);
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin: 0 0 12px;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 5.6vw, 4.4rem);
-      line-height: 1.05;
-      letter-spacing: 0;
-      margin-bottom: 20px;
-    }
-
-    .lead {
-      color: var(--muted);
-      font-size: 1.06rem;
-      max-width: 680px;
-      margin-bottom: 28px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .button {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      padding: 0 18px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .button-primary {
-      background: var(--accent);
-      color: #ffffff;
-    }
-
-    .button-secondary {
-      background: rgba(255, 255, 255, 0.7);
-      border-color: var(--line);
-      color: var(--ink);
-    }
-
-    .preview {
-      border: 1px solid rgba(32, 33, 36, 0.1);
-      border-radius: 8px;
-      background: #ffffff;
-      box-shadow: 0 18px 45px rgba(30, 36, 38, 0.11);
-      padding: 24px;
-    }
-
-    .preview-frame {
-      aspect-ratio: 1 / 1;
-      display: grid;
-      place-items: center;
-      background: #111111;
-      border-radius: 8px;
-      padding: 12%;
-      position: relative;
-    }
-
-    .preview-image {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      border-radius: 18px;
-      background:
-        linear-gradient(135deg, rgba(239, 176, 71, 0.65), rgba(15, 118, 110, 0.55)),
-        #d7f2ec;
-      border: 8px solid rgba(255, 255, 255, 0.78);
-    }
-
-    .color-bar {
-      position: absolute;
-      left: 22%;
-      right: 22%;
-      bottom: 8%;
-      height: 12px;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .color-bar span:nth-child(1) {
-      background: #0f766e;
-    }
-
-    .color-bar span:nth-child(2) {
-      background: #35a889;
-    }
-
-    .color-bar span:nth-child(3) {
-      background: #efb047;
-    }
-
-    .color-bar span:nth-child(4) {
-      background: #f6f4ee;
-    }
-
-    .color-bar span:nth-child(5) {
-      background: #202124;
-    }
-
-    .section {
-      padding-top: 58px;
-    }
-
-    .section h2 {
-      font-size: clamp(1.55rem, 3vw, 2.25rem);
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .section>p {
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .card {
-      min-height: 168px;
-      border: 1px solid rgba(32, 33, 36, 0.1);
-      border-radius: 8px;
-      background: var(--surface);
-      padding: 20px;
-    }
-
-    .card h3 {
-      font-size: 1.12rem;
-      line-height: 1.35;
-      margin-bottom: 8px;
-    }
-
-    .card p,
-    li {
-      color: var(--muted);
-    }
-
-    .steps {
-      display: grid;
-      gap: 12px;
-      margin-top: 22px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .steps li {
-      border-left: 4px solid var(--accent);
-      background: rgba(255, 253, 248, 0.78);
-      border-radius: 0 8px 8px 0;
-      padding: 14px 16px;
-    }
-
-    .note {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(215, 242, 236, 0.44);
-      color: var(--muted);
-      padding: 16px 18px;
-    }
-
-    @media (max-width: 760px) {
-      .inner {
-        width: min(100% - 28px, 1040px);
-      }
-
-      .header .inner,
-      .footer .inner {
-        align-items: flex-start;
-        flex-direction: column;
-        justify-content: center;
-        padding: 14px 0;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .button {
-        width: 100%;
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": "https://framemaker.poppoworks.dev/#software",
+      "name": "FrameMaker",
+      "url": "https://framemaker.poppoworks.dev/",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web",
+      "description": "画像に余白フレームを追加し、比率、背景色、角丸、カラー帯を調整して保存できるブラウザツールです。",
+      "featureList": [
+        "画像への余白フレーム追加",
+        "正方形、4:3、白銀比、3:2、黄金比、平方根3の比率プリセット",
+        "背景色の選択",
+        "角丸調整",
+        "メインカラー帯の追加",
+        "PNG画像として保存"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY"
       }
     }
-  </style>
+  </script>
 </head>
-
 <body>
-  <header class="header">
-    <div class="inner">
-      <a class="brand" href="/">Poppoworks</a>
-      <nav class="nav" aria-label="主要ナビゲーション">
-        <a href="/">Home</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="inner header-inner">
+        <a class="brand" href="/">Poppoworks</a>
+        <nav class="nav" aria-label="主要ナビゲーション">
+          <a href="/">Home</a>
+          <a href="about.html">About</a>
+          <a href="framemaker.html">FrameMaker</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <main>
-    <div class="inner">
-      <section class="hero" aria-labelledby="hero-title">
-        <div>
-          <p class="eyebrow">画像フレーム作成ツール</p>
-          <h1 id="hero-title">FrameMaker</h1>
-          <p class="lead">
-            FrameMaker は、画像に余白フレームを追加して保存できるWebアプリです。
-            正方形、4:3、白銀比、3:2、黄金比、平方根3などの比率に合わせて、SNS投稿やサムネイル向けの余白付き画像を作れます。
-          </p>
-          <div class="actions">
-            <a class="button button-primary" href="https://framemaker.poppoworks.dev/" rel="noopener">FrameMaker を開く</a>
-            <a class="button button-secondary" href="#features">機能を見る</a>
+    <main>
+      <section class="hero">
+        <div class="inner hero-grid">
+          <div>
+            <p class="eyebrow">Image frame maker</p>
+            <h1>FrameMaker</h1>
+            <p class="lead">
+              FrameMaker は、画像のまわりに余白フレームを追加し、SNSやブログ、サムネイル、ポートフォリオで扱いやすい形に整えるWebアプリです。
+              画像を切り抜くのではなく、見せたい部分を残したまま余白で比率を調整できるように作っています。
+            </p>
+            <div class="actions">
+              <a class="button button-primary" href="https://framemaker.poppoworks.dev/" rel="noopener">FrameMaker を開く</a>
+              <a class="button button-secondary" href="#usage">使い方を見る</a>
+            </div>
           </div>
-        </div>
-
-        <div class="preview" aria-hidden="true">
-          <div class="preview-frame">
-            <div class="preview-image"></div>
-            <div class="color-bar">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+          <div class="preview" aria-hidden="true">
+            <div class="preview-frame">
+              <div class="preview-image"></div>
+              <div class="color-bar"><span></span><span></span><span></span><span></span><span></span></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="features" aria-labelledby="features-title">
-        <h2 id="features-title">できること</h2>
-        <p>
-          FrameMaker のリポジトリ内のHTML、JavaScript、Python実装を確認し、公開アプリの主な機能をまとめています。
-        </p>
-        <div class="grid">
-          <article class="card">
-            <h3>フレーム比率を選べる</h3>
-            <p>等倍、4:3、白銀比、3:2、黄金比、平方根3のプリセットと、1.000から1.732までのスライダー調整に対応しています。</p>
-          </article>
-          <article class="card">
-            <h3>背景色を調整できる</h3>
-            <p>白・黒に加えて、読み込んだ画像から抽出した色を背景候補として使える設計です。</p>
-          </article>
-          <article class="card">
-            <h3>角丸を設定できる</h3>
-            <p>画像の角丸を0から200pxまで調整し、フレーム内の見た目を柔らかく整えられます。</p>
-          </article>
-          <article class="card">
-            <h3>メインカラー帯を追加できる</h3>
-            <p>画像の特徴色を抽出し、出力画像の下部に5色のカラーバーとして追加できます。</p>
-          </article>
+      <section class="section">
+        <div class="inner text-grid">
+          <div>
+            <h2>どんな課題を解決するツールか</h2>
+            <p>
+              画像を投稿先の比率に合わせようとすると、端が切れたり、文字やUIの一部が見えなくなったりすることがあります。
+              FrameMaker は、画像の外側に余白を足すことで、元の内容を保ったまま見た目の比率を整えるためのツールです。
+            </p>
+          </div>
+          <div>
+            <h2>想定しているユーザー</h2>
+            <p>
+              個人開発者、ブロガー、デザイナー、動画制作者、ポートフォリオを整理したい人など、画像を少しだけ整えて公開したい人を想定しています。
+              大きな画像編集ソフトを開く前の、短い仕上げ作業に向いた道具です。
+            </p>
+          </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="usage-title">
-        <h2 id="usage-title">使い方</h2>
-        <ol class="steps">
-          <li>画像ファイルを選択します。</li>
-          <li>フレーム比率、背景色、角丸、メインカラー帯の有無を調整します。</li>
-          <li>プレビューを確認し、Save から画像を保存します。</li>
-        </ol>
+      <section class="section alt">
+        <div class="inner">
+          <div class="section-heading">
+            <h2>主な用途</h2>
+            <p>投稿先や掲載先の見え方に合わせて、画像を切り抜かずに余白で整えられます。</p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <h3>SNS投稿画像</h3>
+              <p>縦横比がばらつく写真やスクリーンショットを、タイムラインで見やすい正方形や横長の画像に整えます。</p>
+            </article>
+            <article class="card">
+              <h3>ブログ用画像</h3>
+              <p>記事一覧や本文内で画像サイズをそろえたいとき、余白を加えてサムネイルの印象を統一できます。</p>
+            </article>
+            <article class="card">
+              <h3>YouTubeサムネイル</h3>
+              <p>素材画像の重要部分を残したまま、横長のサムネイル素材として使いやすい見た目に調整できます。</p>
+            </article>
+            <article class="card">
+              <h3>ポートフォリオ画像</h3>
+              <p>制作物のスクリーンショットを同じ余白と背景で並べ、一覧で見たときのまとまりを作れます。</p>
+            </article>
+            <article class="card">
+              <h3>スクリーンショット整理</h3>
+              <p>アプリ画面、UI、エラー画面などを記録するとき、周囲に余白を足して説明用の画像にしやすくします。</p>
+            </article>
+          </div>
+        </div>
       </section>
 
-      <section class="section" aria-labelledby="privacy-title">
-        <h2 id="privacy-title">画像の取り扱い</h2>
-        <p class="note">
-          サーバーに画像が保存されることはありません。
-          ブラウザ上で画像の加工が完結し、PNG画像として保存することができます。
-        </p>
+      <section class="section">
+        <div class="inner">
+          <div class="section-heading">
+            <h2>画像比率ごとの使い分け</h2>
+            <p>FrameMaker では複数の比率を選べます。目的に合わせて使い分けると、画像の印象を調整しやすくなります。</p>
+          </div>
+          <div class="ratio-grid">
+            <article class="card">
+              <h3>1:1 正方形</h3>
+              <p>SNS投稿、プロフィール用画像、一覧表示に向いています。複数画像を並べるときも扱いやすい比率です。</p>
+            </article>
+            <article class="card">
+              <h3>4:3</h3>
+              <p>スクリーンショットや説明画像に使いやすい比率です。横長すぎず、本文中にも置きやすい形です。</p>
+            </article>
+            <article class="card">
+              <h3>白銀比</h3>
+              <p>余白を少し広めに取りたいときに使いやすく、落ち着いた印象の見せ方に向いています。</p>
+            </article>
+            <article class="card">
+              <h3>3:2</h3>
+              <p>写真や横長の制作物を自然に見せたいときに使います。ブログのアイキャッチにも合わせやすい比率です。</p>
+            </article>
+            <article class="card">
+              <h3>黄金比</h3>
+              <p>横方向にゆとりを出したい画像や、サムネイル素材として見せたい画像に向いています。</p>
+            </article>
+            <article class="card">
+              <h3>平方根3</h3>
+              <p>さらに横長の印象を作りたいときに使います。比較画像やワイドなスクリーンショットの整理に便利です。</p>
+            </article>
+          </div>
+        </div>
       </section>
-    </div>
-  </main>
 
-  <footer class="footer">
-    <div class="inner">
-      <span>&copy; 2026 Poppoworks</span>
-      <span><a href="/">Home</a> / <a href="privacy.html">Privacy Policy</a> / <a href="contact.html">Contact</a></span>
-    </div>
-  </footer>
+      <section class="section alt" id="usage">
+        <div class="inner">
+          <div class="section-heading">
+            <h2>基本的な使い方</h2>
+            <p>画像を選び、見た目を調整し、保存するだけで余白付き画像を作成できます。</p>
+          </div>
+          <ol class="steps">
+            <li>FrameMaker を開き、加工したい画像ファイルを選択します。</li>
+            <li>フレーム比率を選び、必要に応じて背景色や角丸を調整します。</li>
+            <li>メインカラー帯を使う場合は、画像の雰囲気に合わせて表示を切り替えます。</li>
+            <li>プレビューで余白や見切れを確認し、問題なければPNG画像として保存します。</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="inner text-grid">
+          <div>
+            <h2>プライバシー面の考え方</h2>
+            <p>
+              FrameMaker は、選択した画像をブラウザ上で処理する設計です。通常の利用では、加工対象の画像を Poppoworks のサーバーへ送信せず、
+              手元のブラウザ内でプレビューと保存を行います。
+            </p>
+          </div>
+          <div>
+            <h2>FrameMaker を作った理由</h2>
+            <p>
+              スクリーンショットや制作物の画像を公開するとき、比率を合わせるためだけに画像編集ソフトを開くのは手間が大きいと感じていました。
+              元画像を大きく加工せず、余白を足して整える作業に絞った軽い道具として FrameMaker を作りました。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="inner">
+          <div class="section-heading">
+            <h2>FAQ</h2>
+            <p>FrameMaker の利用前に確認されやすい内容をまとめています。</p>
+          </div>
+          <div class="content-block">
+            <h2>無料で使えますか？</h2>
+            <p>はい。FrameMaker は無料で利用できます。</p>
+            <h2>画像はサーバーにアップロードされますか？</h2>
+            <p>通常の利用では、画像処理はブラウザ上で完結します。Poppoworks のサーバーへ加工対象の画像を送信する設計ではありません。</p>
+            <h2>保存形式は何ですか？</h2>
+            <p>出力画像はPNG形式で保存できます。投稿前の確認や、別の編集作業に回す素材として使いやすい形式です。</p>
+            <h2>商用利用できますか？</h2>
+            <p>FrameMakerで作成した画像は、ユーザー自身が権利を持つ素材であれば、個人利用・商用利用のどちらにも使用できます。元画像の権利や利用条件は各自で確認してください。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="inner">
+          <div class="section-heading">
+            <h2>更新履歴</h2>
+            <p>公開中の内容とサイト上の説明を、利用実態に合わせて継続的に見直します。</p>
+          </div>
+          <div class="content-block">
+            <h2>2026年6月18日</h2>
+            <p>FrameMaker紹介ページを拡充し、用途、比率の使い分け、FAQ、プライバシー説明を追加しました。</p>
+            <h2>2026年6月</h2>
+            <p>Poppoworks 公式サイト上で FrameMaker の紹介ページを公開しました。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner footer-inner">
+        <span>&copy; 2026 Poppoworks</span>
+        <span><a href="/">Home</a> / <a href="about.html">About</a> / <a href="privacy.html">Privacy Policy</a> / <a href="contact.html">Contact</a></span>
+      </div>
+    </footer>
+  </div>
 </body>
-
 </html>

@@ -1,231 +1,104 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>プライバシーポリシー | Poppoworks</title>
-    <meta
-      name="description"
-      content="Poppoworks のプライバシーポリシーです。広告、アクセス解析、Cookie、外部サービスの利用について説明しています。"
-    >
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#f6f4ee">
-    <link rel="canonical" href="https://poppoworks.dev/privacy.html">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Poppoworks">
-    <meta property="og:title" content="プライバシーポリシー | Poppoworks">
-    <meta
-      property="og:description"
-      content="Poppoworks のプライバシーポリシーです。広告、アクセス解析、Cookie、外部サービスの利用について説明しています。"
-    >
-    <meta property="og:url" content="https://poppoworks.dev/privacy.html">
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f6f4ee;
-        --surface: #fffdf8;
-        --ink: #202124;
-        --muted: #64676d;
-        --line: #ded9cb;
-        --accent: #0f766e;
-        font-family:
-          "Inter",
-          "Noto Sans JP",
-          "Hiragino Kaku Gothic ProN",
-          "Yu Gothic",
-          Meiryo,
-          system-ui,
-          sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.8;
-      }
-
-      a {
-        color: var(--accent);
-      }
-
-      .header,
-      .footer {
-        border-color: rgba(32, 33, 36, 0.08);
-        border-style: solid;
-        border-width: 0 0 1px;
-        background: rgba(246, 244, 238, 0.86);
-      }
-
-      .footer {
-        border-width: 1px 0 0;
-      }
-
-      .inner {
-        width: min(860px, calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      .header .inner,
-      .footer .inner {
-        min-height: 68px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-      }
-
-      .brand {
-        color: var(--ink);
-        font-weight: 800;
-        text-decoration: none;
-      }
-
-      .nav {
-        display: flex;
-        gap: 16px;
-        font-size: 0.94rem;
-      }
-
-      .nav a {
-        color: var(--muted);
-        text-decoration: none;
-      }
-
-      main {
-        padding: 56px 0 72px;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 5vw, 3.2rem);
-        line-height: 1.15;
-        letter-spacing: 0;
-        margin: 0 0 12px;
-      }
-
-      .updated {
-        color: var(--muted);
-        margin: 0 0 34px;
-      }
-
-      .policy {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: clamp(22px, 5vw, 38px);
-      }
-
-      h2 {
-        font-size: 1.28rem;
-        line-height: 1.35;
-        margin: 34px 0 8px;
-      }
-
-      h2:first-child {
-        margin-top: 0;
-      }
-
-      p,
-      li {
-        color: var(--muted);
-      }
-
-      ul {
-        padding-left: 1.2em;
-      }
-
-      .footer {
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 640px) {
-        .inner {
-          width: min(100% - 28px, 860px);
-        }
-
-        .header .inner,
-        .footer .inner {
-          align-items: flex-start;
-          flex-direction: column;
-          justify-content: center;
-          padding: 14px 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <div class="inner">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー | Poppoworks</title>
+  <meta name="description" content="Poppoworks のプライバシーポリシーです。個人情報、Cookie、Google AdSense、アクセス解析、外部リンクについて説明しています。">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f6f4ee">
+  <link rel="canonical" href="https://poppoworks.dev/privacy.html">
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Poppoworks">
+  <meta property="og:title" content="プライバシーポリシー | Poppoworks">
+  <meta property="og:description" content="Poppoworks のプライバシーポリシーです。個人情報、Cookie、Google AdSense、アクセス解析、外部リンクについて説明しています。">
+  <meta property="og:url" content="https://poppoworks.dev/privacy.html">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="inner header-inner">
         <a class="brand" href="/">Poppoworks</a>
         <nav class="nav" aria-label="主要ナビゲーション">
           <a href="/">Home</a>
+          <a href="about.html">About</a>
+          <a href="framemaker.html">FrameMaker</a>
+          <a href="privacy.html">Privacy Policy</a>
           <a href="contact.html">Contact</a>
         </nav>
       </div>
     </header>
 
-    <main>
-      <div class="inner">
+    <main class="page-main">
+      <div class="inner narrow">
+        <p class="eyebrow">Privacy Policy</p>
         <h1>プライバシーポリシー</h1>
-        <p class="updated">制定日: 2026年6月8日</p>
+        <p class="updated">制定日: 2026年6月8日 / 最終更新日: 2026年6月18日</p>
 
-        <div class="policy">
+        <article class="policy">
           <h2>個人情報の取り扱い</h2>
           <p>
-            Poppoworks では、ユーザーからのお問い合わせ等により取得した情報を、回答や必要な連絡のために利用します。
-            取得した情報を、法令に基づく場合を除き、本人の同意なく第三者へ提供することはありません。
+            Poppoworks では、ユーザーからのお問い合わせや連絡により、連絡先、アカウント名、問い合わせ内容などの情報を受け取る場合があります。
+            これらの情報は、問い合わせへの回答、内容確認、必要な連絡のために利用します。
+          </p>
+          <p>
+            法令に基づく場合を除き、本人の同意なく取得した個人情報を第三者へ提供することはありません。
           </p>
 
-          <h2>広告配信について</h2>
+          <h2>Cookie と第三者配信広告について</h2>
           <p>
-            Poppoworks では、第三者配信の広告サービスである Google AdSense を利用する予定です。
-            広告配信事業者は、ユーザーの興味に応じた広告を表示するために Cookie を使用することがあります。
+            Poppoworks では、Google AdSense を利用する予定です。Google などの第三者配信事業者は、広告配信のために Cookie を使用することがあります。
+            Cookie により、ユーザーが過去にアクセスしたWebサイトの情報に基づいて広告が表示される場合があります。
           </p>
           <p>
-            Cookie を使用した広告配信を望まない場合は、Google の広告設定ページからパーソナライズ広告を無効にできます。
+            パーソナライズ広告を無効にしたい場合は、Google の広告設定から変更できます。また、ブラウザの設定により Cookie を無効にすることもできます。
           </p>
 
           <h2>アクセス解析について</h2>
           <p>
-            Poppoworks では、サイト改善のためにアクセス解析ツールを利用する場合があります。
-            アクセス解析では Cookie を使用することがありますが、個人を特定する情報は含まれません。
+            現時点で、Poppoworks では Google Analytics などのアクセス解析サービスを導入していません。
+            今後、サイト改善のためにアクセス解析を導入する場合は、利用するサービス名とデータの取り扱いを本ページに追記します。
+          </p>
+
+          <h2>画像処理を行うツールについて</h2>
+          <p>
+            FrameMaker は、ユーザーが選択した画像をブラウザ上で処理する設計です。通常の利用において、加工対象の画像を Poppoworks のサーバーへ送信したり、
+            Poppoworks 側で保存したりすることはありません。
           </p>
 
           <h2>外部リンクについて</h2>
           <p>
-            Poppoworks には外部サイトへのリンクが含まれます。外部サイトでの個人情報の取り扱いについては、
+            Poppoworks には、GitHub、X、公開アプリなど外部サイトへのリンクが含まれます。外部サイトでの個人情報の取り扱いは、
             各サイトのプライバシーポリシーをご確認ください。
           </p>
 
           <h2>免責事項</h2>
           <p>
-            Poppoworks に掲載する情報は、できる限り正確な内容を保つよう努めますが、正確性や安全性を保証するものではありません。
-            本サイトの利用により生じた損害について、運営者は責任を負いかねます。
+            Poppoworks に掲載する情報は、できる限り正確な内容を保つよう努めますが、正確性、完全性、安全性を保証するものではありません。
+            本サイトや公開ツールの利用により生じた損害について、運営者は責任を負いかねます。
           </p>
 
           <h2>お問い合わせ</h2>
           <p>
-            本ポリシーに関するお問い合わせは、<a href="contact.html">Contact ページ</a>からご確認ください。
+            本ポリシーに関するお問い合わせは、<a href="contact.html">Contact ページ</a>に掲載している方法からご連絡ください。
           </p>
 
           <h2>改定について</h2>
           <p>
             本ポリシーは、必要に応じて内容を変更することがあります。変更後の内容は、本ページに掲載した時点で有効になります。
           </p>
-        </div>
+        </article>
       </div>
     </main>
 
-    <footer class="footer">
-      <div class="inner">
+    <footer class="site-footer">
+      <div class="inner footer-inner">
         <span>&copy; 2026 Poppoworks</span>
-        <span><a href="/">Home</a></span>
+        <span><a href="about.html">About</a> / <a href="contact.html">Contact</a></span>
       </div>
     </footer>
-  </body>
+  </div>
+</body>
 </html>

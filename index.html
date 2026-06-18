@@ -1,528 +1,78 @@
 <!doctype html>
 <html lang="ja">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Poppoworks | 個人開発アプリ</title>
-  <meta name="description" content="Poppoworks は個人開発アプリを公開するサイトです。FrameMaker などの便利なWebアプリを紹介しています。">
+  <title>Poppoworks | ブラウザで使える軽量ツール</title>
+  <meta name="description" content="Poppoworks は、ブラウザ上で使える軽量な制作支援ツールを公開する個人開発サイトです。現在は画像に余白フレームを付ける FrameMaker を公開しています。">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#f6f4ee">
   <link rel="canonical" href="https://poppoworks.dev/">
-
+  <link rel="stylesheet" href="styles.css">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Poppoworks">
-  <meta property="og:title" content="Poppoworks | 個人開発アプリ">
-  <meta property="og:description" content="Poppoworks は個人開発アプリを公開するサイトです。FrameMaker などの便利なWebアプリを紹介しています。">
+  <meta property="og:title" content="Poppoworks | ブラウザで使える軽量ツール">
+  <meta property="og:description" content="Poppoworks は、ブラウザ上で使える軽量な制作支援ツールを公開する個人開発サイトです。">
   <meta property="og:url" content="https://poppoworks.dev/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Poppoworks | 個人開発アプリ">
-  <meta name="twitter:description" content="Poppoworks は個人開発アプリを公開するサイトです。FrameMaker などの便利なWebアプリを紹介しています。">
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5840725185082524"
-    crossorigin="anonymous"></script>
-
   <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebSite",
-            "@id": "https://poppoworks.dev/#website",
-            "url": "https://poppoworks.dev/",
-            "name": "Poppoworks",
-            "description": "Poppoworks は個人開発アプリを公開するサイトです。"
-          },
-          {
-            "@type": "SoftwareApplication",
-            "@id": "https://framemaker.poppoworks.dev/#software",
-            "name": "FrameMaker",
-            "url": "https://framemaker.poppoworks.dev/",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Web",
-            "description": "FrameMaker は Poppoworks が公開しているWebアプリです。",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "JPY"
-            }
-          }
-        ]
-      }
-    </script>
-
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f6f4ee;
-      --surface: #fffdf8;
-      --surface-strong: #ffffff;
-      --ink: #202124;
-      --muted: #64676d;
-      --line: #ded9cb;
-      --accent: #0f766e;
-      --accent-strong: #115e59;
-      --accent-soft: #d7f2ec;
-      --warm: #efb047;
-      --shadow: 0 18px 45px rgba(30, 36, 38, 0.11);
-      font-family:
-        "Inter",
-        "Noto Sans JP",
-        "Hiragino Kaku Gothic ProN",
-        "Yu Gothic",
-        Meiryo,
-        system-ui,
-        sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background:
-        linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent 34%),
-        linear-gradient(225deg, rgba(239, 176, 71, 0.14), transparent 32%),
-        var(--bg);
-      color: var(--ink);
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .site-shell {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .site-header {
-      border-bottom: 1px solid rgba(32, 33, 36, 0.08);
-      background: rgba(246, 244, 238, 0.82);
-      backdrop-filter: blur(16px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .header-inner,
-    .section-inner,
-    .footer-inner {
-      width: min(1080px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .header-inner {
-      min-height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      font-size: 1rem;
-      font-weight: 800;
-      letter-spacing: 0;
-      text-decoration: none;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .nav a {
-      text-decoration: none;
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible {
-      color: var(--accent-strong);
-    }
-
-    main {
-      flex: 1;
-    }
-
-    .hero {
-      padding: 72px 0 42px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
-      gap: clamp(28px, 6vw, 72px);
-      align-items: center;
-    }
-
-    .eyebrow {
-      color: var(--accent-strong);
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin: 0 0 12px;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 6vw, 4.7rem);
-      line-height: 1.02;
-      letter-spacing: 0;
-      margin-bottom: 22px;
-    }
-
-    .lead {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 660px;
-      margin-bottom: 30px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .button {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      border-radius: 8px;
-      padding: 0 18px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      text-decoration: none;
-      transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        background 160ms ease;
-    }
-
-    .button:hover,
-    .button:focus-visible {
-      transform: translateY(-1px);
-    }
-
-    .button-primary {
-      background: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.24);
-    }
-
-    .button-primary:hover,
-    .button-primary:focus-visible {
-      background: var(--accent-strong);
-    }
-
-    .button-secondary {
-      background: rgba(255, 255, 255, 0.68);
-      border-color: var(--line);
-      color: var(--ink);
-    }
-
-    .visual {
-      min-height: 360px;
-      border: 1px solid rgba(32, 33, 36, 0.1);
-      border-radius: 8px;
-      background:
-        linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(255, 253, 248, 0.68)),
-        repeating-linear-gradient(90deg, rgba(15, 118, 110, 0.12) 0 1px, transparent 1px 42px),
-        repeating-linear-gradient(0deg, rgba(239, 176, 71, 0.14) 0 1px, transparent 1px 42px);
-      box-shadow: var(--shadow);
-      padding: 26px;
-      display: grid;
-      align-content: center;
-      gap: 18px;
-    }
-
-    .mock-window {
-      background: var(--surface-strong);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .mock-toolbar {
-      min-height: 42px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 14px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--line);
-    }
-
-    .dot:nth-child(1) {
-      background: #ef6b61;
-    }
-
-    .dot:nth-child(2) {
-      background: #efb047;
-    }
-
-    .dot:nth-child(3) {
-      background: #35a889;
-    }
-
-    .mock-body {
-      padding: 22px;
-      display: grid;
-      gap: 14px;
-    }
-
-    .mock-row {
-      height: 14px;
-      border-radius: 999px;
-      background: #e7e3d6;
-    }
-
-    .mock-row:nth-child(1) {
-      width: 58%;
-      background: var(--accent-soft);
-    }
-
-    .mock-row:nth-child(2) {
-      width: 82%;
-    }
-
-    .mock-row:nth-child(3) {
-      width: 67%;
-    }
-
-    .mock-panel {
-      min-height: 118px;
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(15, 118, 110, 0.18), rgba(239, 176, 71, 0.23)),
-        #f8f3e6;
-      border: 1px solid rgba(32, 33, 36, 0.08);
-    }
-
-    .section {
-      padding: 40px 0;
-    }
-
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 22px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
-      line-height: 1.18;
-      margin-bottom: 10px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      margin-bottom: 0;
-    }
-
-    .app-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-    }
-
-    .app-card {
-      display: grid;
-      min-height: 260px;
-      padding: 24px;
-      border-radius: 8px;
-      background: var(--surface);
-      border: 1px solid rgba(32, 33, 36, 0.1);
-      box-shadow: 0 10px 28px rgba(30, 36, 38, 0.07);
-    }
-
-    .app-card h3 {
-      font-size: 1.42rem;
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-
-    .app-card p {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    .app-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .tag {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.84rem;
-      padding: 4px 10px;
-    }
-
-    .app-card .button {
-      align-self: end;
-      justify-self: start;
-    }
-
-    .app-actions {
-      align-self: end;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .app-actions .button {
-      align-self: auto;
-      justify-self: auto;
-    }
-
-    .ad-section {
-      padding: 28px 0 18px;
-    }
-
-    .ad-box {
-      min-height: 120px;
-      display: grid;
-      place-items: center;
-      border: 1px dashed #c8c0ac;
-      border-radius: 8px;
-      background: rgba(255, 253, 248, 0.56);
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 18px;
-    }
-
-    .about {
-      padding-bottom: 68px;
-    }
-
-    .about-text {
-      max-width: 760px;
-      color: var(--muted);
-    }
-
-    .site-footer {
-      border-top: 1px solid rgba(32, 33, 36, 0.08);
-      padding: 26px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 780px) {
-
-      .header-inner,
-      .section-inner,
-      .footer-inner {
-        width: min(100% - 28px, 1080px);
-      }
-
-      .header-inner {
-        min-height: 62px;
-      }
-
-      .nav {
-        gap: 12px;
-        font-size: 0.88rem;
-      }
-
-      .hero {
-        padding-top: 46px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .visual {
-        min-height: 270px;
-        padding: 18px;
-      }
-
-      .button {
-        width: 100%;
-      }
-
-        .app-card .button,
-        .app-actions .button {
-          justify-self: stretch;
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://poppoworks.dev/#website",
+          "url": "https://poppoworks.dev/",
+          "name": "Poppoworks",
+          "description": "ブラウザ上で使える軽量な制作支援ツールを公開する個人開発サイトです。"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://poppoworks.dev/#organization",
+          "name": "Poppoworks",
+          "url": "https://poppoworks.dev/"
         }
+      ]
     }
-  </style>
+  </script>
 </head>
-
 <body>
   <div class="site-shell">
     <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="/" aria-label="Poppoworks ホーム">Poppoworks</a>
-          <nav class="nav" aria-label="主要ナビゲーション">
-            <a href="#apps">Apps</a>
-            <a href="framemaker.html">FrameMaker</a>
-            <a href="#about">About</a>
-            <a href="contact.html">Contact</a>
-          </nav>
+      <div class="inner header-inner">
+        <a class="brand" href="/">Poppoworks</a>
+        <nav class="nav" aria-label="主要ナビゲーション">
+          <a href="/">Home</a>
+          <a href="about.html">About</a>
+          <a href="framemaker.html">FrameMaker</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="section-inner hero-grid">
+      <section class="hero">
+        <div class="inner hero-grid">
           <div>
-            <p class="eyebrow">個人開発アプリ</p>
-            <h1 id="hero-title">Poppoworks</h1>
+            <p class="eyebrow">Browser tools for small creative tasks</p>
+            <h1>Poppoworks</h1>
             <p class="lead">
-              Poppoworks は、日々の作業や制作を少し扱いやすくするWebアプリを公開する個人開発サイトです。
-              小さく試し、使いやすい形に整えながら、継続的に改善しています。
+              Poppoworks は、日々の制作や発信で発生する小さな手間を、ブラウザだけで片づけられる形にする個人開発サイトです。
+              インストールや複雑な設定を前提にせず、必要なときに開いてすぐ使える軽量なツールを公開しています。
             </p>
             <div class="actions">
-              <a class="button button-primary" href="https://framemaker.poppoworks.dev/" rel="noopener">
-                FrameMaker を開く
-              </a>
-              <a class="button button-secondary" href="#apps">アプリを見る</a>
+              <a class="button button-primary" href="framemaker.html">FrameMaker を知る</a>
+              <a class="button button-secondary" href="https://framemaker.poppoworks.dev/" rel="noopener">アプリを開く</a>
             </div>
           </div>
-
           <div class="visual" aria-hidden="true">
             <div class="mock-window">
-              <div class="mock-toolbar">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
+              <div class="mock-toolbar"><span></span><span></span><span></span></div>
               <div class="mock-body">
+                <span class="mock-row short"></span>
                 <span class="mock-row"></span>
-                <span class="mock-row"></span>
-                <span class="mock-row"></span>
+                <span class="mock-row medium"></span>
                 <span class="mock-panel"></span>
               </div>
             </div>
@@ -530,63 +80,58 @@
         </div>
       </section>
 
-      <section class="section" id="apps" aria-labelledby="apps-title">
-        <div class="section-inner">
+      <section class="section">
+        <div class="inner">
           <div class="section-heading">
-            <h2 id="apps-title">公開中のアプリ</h2>
-            <p>現在公開している個人開発アプリです。必要なときにすぐ使える、軽量なWebアプリを中心に追加していきます。</p>
+            <h2>公開中のツール</h2>
+            <p>
+              現在公開しているアプリは FrameMaker です。SNS、ブログ、ポートフォリオなどに使う画像へ余白フレームを追加し、
+              表示先に合わせて扱いやすい比率へ整えるためのWebアプリです。
+            </p>
           </div>
-
-          <div class="app-list">
-            <article class="app-card">
-              <div>
-                <h3>FrameMaker</h3>
-                <p>
-                  画像に正方形や黄金比などの余白フレームを付け、背景色、角丸、メインカラー帯を調整して保存できるWebアプリです。
-                </p>
-                <div class="app-meta" aria-label="アプリ情報">
-                  <span class="tag">Web App</span>
-                  <span class="tag">個人開発</span>
-                  <span class="tag">無料</span>
-                </div>
-              </div>
-              <div class="app-actions">
-                <a class="button button-primary" href="https://framemaker.poppoworks.dev/" rel="noopener">
-                  アプリへ移動
-                </a>
-                <a class="button button-secondary" href="framemaker.html">紹介を見る</a>
-              </div>
-            </article>
-          </div>
+          <article class="feature-card">
+            <div>
+              <p class="eyebrow">Image framing tool</p>
+              <h3>FrameMaker</h3>
+              <p>
+                画像を選び、正方形・4:3・白銀比・黄金比などのフレーム比率、背景色、角丸、カラー帯を調整してPNGとして保存できます。
+                画像の説明性を保ちながら、投稿先や掲載先に合わせた余白を素早く作ることを目的にしています。
+              </p>
+            </div>
+            <div class="actions">
+              <a class="button button-primary" href="framemaker.html">紹介ページへ</a>
+              <a class="button button-secondary" href="https://framemaker.poppoworks.dev/" rel="noopener">アプリへ移動</a>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="section about" id="about" aria-labelledby="about-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="about-title">Poppoworks について</h2>
+      <section class="section alt">
+        <div class="inner text-grid">
+          <div>
+            <h2>軽く、わかりやすく、手元で完結する道具</h2>
+            <p>
+              Poppoworks では、大きな制作ソフトを開くほどではない作業を、短い手順で済ませられるツールとして形にしています。
+              画像加工や変換のように個人の素材を扱う機能では、可能な限りブラウザ上で処理を完結させる設計を重視します。
+            </p>
           </div>
-          <p class="about-text">
-            Poppoworks は、個人開発で作成したWebアプリを公開・紹介するためのサイトです。
-            便利だと感じたアイデアを小さなアプリとして形にし、実際に使いながら改善していきます。
-          </p>
+          <div>
+            <h2>公開後も使いながら改善</h2>
+            <p>
+              便利な機能を増やすだけでなく、説明、使い方、注意点もあわせて整備します。
+              新しいツールを追加する場合も、何に使えるのか、どのような人に向いているのかが分かる状態で公開します。
+            </p>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-inner">
-          <span>&copy; 2026 Poppoworks</span>
-          <span>
-            <a href="privacy.html">Privacy Policy</a>
-            /
-            <a href="contact.html">Contact</a>
-            /
-            <a href="framemaker.html">FrameMaker</a>
-          </span>
-        </div>
+      <div class="inner footer-inner">
+        <span>&copy; 2026 Poppoworks</span>
+        <span><a href="about.html">About</a> / <a href="privacy.html">Privacy Policy</a> / <a href="contact.html">Contact</a></span>
+      </div>
     </footer>
   </div>
 </body>
-
 </html>
